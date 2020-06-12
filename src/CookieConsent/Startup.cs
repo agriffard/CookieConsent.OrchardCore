@@ -16,11 +16,11 @@ namespace CookieConsent.OrchardCore
         {
             services.AddScoped<IPermissionProvider, Permissions.Cookies>();
             services.AddScoped<IResourceManifestProvider, ResourceManifest>();
-            services.AddScoped<IDisplayDriver<ISite>, CookiesSettingsDisplayDriver>();
+            services.AddScoped<IDisplayDriver<ISite>, ConsentSettingsDisplayDriver>();
             services.AddScoped<INavigationProvider, AdminMenu>();
             services.Configure<MvcOptions>((options) =>
             {
-                options.Filters.Add(typeof(CookiesFilter));
+                options.Filters.Add(typeof(ConsentFilter));
             });
         }
     }

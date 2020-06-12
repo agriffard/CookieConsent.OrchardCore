@@ -4,21 +4,20 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using OrchardCore.Admin;
 using OrchardCore.Entities;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Settings;
 
 namespace CookieConsent.OrchardCore
 {
-    public class CookiesFilter : IAsyncResultFilter
+    public class ConsentFilter : IAsyncResultFilter
     {
         private readonly IResourceManager _resourceManager;
         private readonly ISiteService _siteService;
 
         private HtmlString _scriptsCache;
 
-        public CookiesFilter(
+        public ConsentFilter(
             IResourceManager resourceManager,
             ISiteService siteService)
         {
@@ -33,13 +32,9 @@ namespace CookieConsent.OrchardCore
             {
                 if (_scriptsCache == null)
                 {
-                    var settings = (await _siteService.GetSiteSettingsAsync()).As<CookiesSettings>();
+                    var settings = (await _siteService.GetSiteSettingsAsync()).As<ConsentSettings>();
 
-                    _scriptsCache = new HtmlString($"<script src=\"/CookieConsent.OrchardCore/Scripts/cookieconsent.js\"></script>\n<script>window.CookieConsent.init({{modalMainTextMoreLink:null,barTimeout:1000,theme:{{barColor:'{settings.BarColor}',barTextColor:'{settings.BarTextColor}',barMainButtonColor: '{settings.BarMainButtonColor}',barMainButtonTextColor:'{settings.BarMainButtonTextColor}',modalMainButtonColor: '{settings.ModalMainButtonColor}',modalMainButtonTextColor:'{settings.ModalMainButtonTextColor}',}}" +
-                        $"{settings.Language}" +
-                        $"{settings.Categories}" +
-                        $"{settings.Services} " +
-                        $"}});</script>");
+                    _scriptsCache = new HtmlString($"<script src=\"/CookieConsent.OrchardCore/Scripts/cookieconsent.js\"></script>\n<script>window.CookieConsent.init({{modalMainTextMoreLink:null,barTimeout:1000,theme:{{barColor:'{settings.BarColor}',barTextColor:'{settings.BarTextColor}',barMainButtonColor: '{settings.BarMainButtonColor}',barMainButtonTextColor:'{settings.BarMainButtonTextColor}',modalMainButtonColor: '{settings.ModalMainButtonColor}',modalMainButtonTextColor:'{settings.ModalMainButtonTextColor}',}},{settings.Language},{settings.Categories},{settings.Services}}});</script>");
                 }
 
                 if (_scriptsCache != null)

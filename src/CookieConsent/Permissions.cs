@@ -7,8 +7,8 @@ namespace CookieConsent.OrchardCore
 {
     public class Permissions
     {
-        public static readonly Permission ManageCookies
-            = new Permission(nameof(ManageCookies), "Manage Cookies settings");
+        public static readonly Permission ManageConsent
+            = new Permission(nameof(ManageConsent), "Manage Cookies consent settings");
 
 
         public class Cookies : IPermissionProvider
@@ -18,7 +18,7 @@ namespace CookieConsent.OrchardCore
             {
                 return Task.FromResult(new []
                 {
-                    ManageCookies
+                    ManageConsent
                 }
                 .AsEnumerable());
             }
@@ -30,7 +30,7 @@ namespace CookieConsent.OrchardCore
                     Name = "Administrator",
                     Permissions = new []
                     {
-                        ManageCookies
+                        ManageConsent
                     }
                 };
             }

@@ -1,7 +1,7 @@
-@model CookiesSettingsViewModel;
+@model ConsentSettingsViewModel;
 @using CookieConsent.OrchardCore.ViewModels;
 
-<h3>@T["Cookies Settings"]</h3>
+<h3>@T["Consent Settings"]</h3>
 <div class="row">
     <div class="col-4">
         <div class="form-group" asp-validation-class-for="BarColor">
@@ -16,12 +16,12 @@
             <label asp-for="BarTextColor">@T["Bar text color"]</label>
             <input asp-for="BarTextColor" class="form-control" type="color" />
             <span asp-validation-for="BarTextColor"></span>
-            <span class="hint">@T["The color of the text in the bar."]</span>
+            <span class="hint">@T["The text color of the bar."]</span>
         </div>
     </div>
     <div class="col-4">
         <div class="form-group" asp-validation-class-for="BarMainButtonColor">
-            <label asp-for="BarMainButtonColor">@T["Bar main button color"]</label>
+            <label asp-for="BarMainButtonColor">@T["Bar main button color."]</label>
             <input asp-for="BarMainButtonColor" class="form-control" type="color" />
             <span asp-validation-for="BarMainButtonColor"></span>
             <span class="hint">@T["The color of the main button."]</span>
@@ -46,11 +46,11 @@
         </div>
     </div>
     <div class="col-4">
-        <div class="form-group" asp-validation-class-for="ModalMainButtonTextColor">
+        <div class="form-group" asp-validation-class-for="BarMainButtonTextColor">
             <label asp-for="ModalMainButtonTextColor">@T["Modal main button text color"]</label>
             <input asp-for="ModalMainButtonTextColor" class="form-control" type="color" />
             <span asp-validation-for="ModalMainButtonTextColor"></span>
-            <span class="hint">@T["The text color of the modal main button."]</span>
+            <span class="hint">@T["Bar main button text color"]</span>
         </div>
     </div>
 </div>
@@ -60,13 +60,12 @@
             <label asp-for="Language">@T["Language"]</label>
             <textarea asp-for="Language" class="form-control" rows="22"></textarea>
             <span asp-validation-for="Language"></span>
-            <span class="hint">@T["The language."]</span>
+            <span class="hint">@T["The language parameter"]</span>
         </div>
     </div>
     <div class="col-6">
         <label>@T["Example"]</label><br />
-        <pre><code>,
-    language: {
+        <pre><code>language: {
       current: 'en',
       locale: {
         en: {
@@ -93,13 +92,12 @@
             <label asp-for="Categories">@T["Categories"]</label>
             <textarea asp-for="Categories" class="form-control" rows="15"></textarea>
             <span asp-validation-for="Categories"></span>
-            <span class="hint">@T["The categories."]</span>
+            <span class="hint">@T["The categories parameter."]</span>
         </div>
     </div>
     <div class="col-6">
         <label>@T["Example"]</label><br />
-        <pre><code>,
-    categories: {
+        <pre><code>categories: {
       necessary: {
         needed: true,
         wanted: true,
@@ -108,7 +106,7 @@
           locale: {
             en: {
               name: 'Strictly Necessary Cookies',
-              description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+              description: 'Cookies necessary for the site.',
             }
           }
         }
@@ -119,17 +117,16 @@
 </div>
 <div class="row">
     <div class="col-6">
-        <div class="form-group" asp-validation-class-for="Services">
+        <div class="form-group" asp-validation-class-for="ModalMainButtonColor">
             <label asp-for="Services">@T["Services"]</label>
-            <textarea asp-for="Services" class="form-control" rows="22"></textarea>
+            <textarea asp-for="Services" class="form-control" rows="21"></textarea>
             <span asp-validation-for="Services"></span>
-            <span class="hint">@T["The services."]</span>
+            <span class="hint">@T["The services parameter"]</span>
         </div>
     </div>
     <div class="col-6">
         <label>@T["Example"]</label><br />
-        <pre><code>,
-    services: {
+        <pre><code>services: {
       analytics: {
         category: 'necessary',
         search: 'analytics',

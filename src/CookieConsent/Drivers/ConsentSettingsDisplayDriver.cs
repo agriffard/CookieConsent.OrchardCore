@@ -11,14 +11,14 @@ using OrchardCore.Settings;
 
 namespace CookieConsent.OrchardCore.Drivers
 {
-    public class CookiesSettingsDisplayDriver : SectionDisplayDriver<ISite, CookiesSettings>
+    public class ConsentSettingsDisplayDriver : SectionDisplayDriver<ISite, ConsentSettings>
     {
         private readonly IAuthorizationService _authorizationService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IShellHost _shellHost;
         private readonly ShellSettings _shellSettings;
 
-        public CookiesSettingsDisplayDriver(
+        public ConsentSettingsDisplayDriver(
             IAuthorizationService authorizationService,
             IHttpContextAccessor httpContextAccessor,
             IShellHost shellHost,
@@ -30,15 +30,15 @@ namespace CookieConsent.OrchardCore.Drivers
             _shellSettings = shellSettings;
         }
 
-        public override async Task<IDisplayResult> EditAsync(CookiesSettings settings, BuildEditorContext context)
+        public override async Task<IDisplayResult> EditAsync(ConsentSettings settings, BuildEditorContext context)
         {
             var user = _httpContextAccessor.HttpContext?.User;
-            if (user == null || !await _authorizationService.AuthorizeAsync(user, Permissions.ManageCookies))
+            if (user == null || !await _authorizationService.AuthorizeAsync(user, Permissions.ManageConsent))
             {
                 return null;
             }
 
-            return Initialize<CookiesSettingsViewModel>("CookiesSettings_Edit", model =>
+            return Initialize<ConsentSettingsViewModel>("ConsentSettings_Edit", model =>
             {
                 model.BarColor = settings.BarColor;
                 model.BarTextColor = settings.BarTextColor;
@@ -48,20 +48,20 @@ namespace CookieConsent.OrchardCore.Drivers
                 model.Language = settings.Language;
                 model.Categories = settings.Categories;
                 model.Services = settings.Services;
-            }).Location("Content:5").OnGroup(CookiesConstants.Features.Cookies);
+            }).Location("Content:5").OnGroup(ConsentConstants.Features.Consent);
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(CookiesSettings settings, BuildEditorContext context)
+        public override async Task<IDisplayResult> UpdateAsync(ConsentSettings settings, BuildEditorContext context)
         {
-            if (context.GroupId == CookiesConstants.Features.Cookies)
+            if (context.GroupId == ConsentConstants.Features.Consent)
             {
                 var user = _httpContextAccessor.HttpContext?.User;
-                if (user == null || !await _authorizationService.AuthorizeAsync(user, Permissions.ManageCookies))
+                if (user == null || !await _authorizationService.AuthorizeAsync(user, Permissions.ManageConsent))
                 {
                     return null;
                 }
 
-                var model = new CookiesSettingsViewModel();
+                var model = new ConsentSettingsViewModel();
                 await context.Updater.TryUpdateModelAsync(model, Prefix);
 
                 if (context.Updater.ModelState.IsValid)

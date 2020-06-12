@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CookieConsent.OrchardCore.ViewModels
 {
-    public class CookiesSettingsViewModel
+    public class ConsentSettingsViewModel
     {
         public string BarColor { get; set; }
         public string BarTextColor { get; set; }

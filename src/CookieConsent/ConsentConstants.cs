@@ -1,10 +1,10 @@
 namespace CookieConsent.OrchardCore
 {
-    public static class CookiesConstants
+    public static class ConsentConstants
     {
         public static class Features
         {
-            public const string Cookies = "Cookies";
+            public const string Consent = "Consent";
         }
     }
 }
