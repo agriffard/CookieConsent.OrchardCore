@@ -25,7 +25,7 @@ namespace CookieConsent.OrchardCore
             {
                 builder.Add(S["Configuration"], configuration => configuration
                         .Add(S["Settings"], settings => settings
-                        .Add(S["Consent"], consent => consent
+                        .Add(S["Consent"], S["Consent"].PrefixPosition(), consent => consent
                             .AddClass("consent").Id("consent")
                             .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = ConsentConstants.Features.Consent })
                             .LocalNav())
