@@ -43,6 +43,7 @@ namespace CookieConsent.OrchardCore.Drivers
                 model.BarColor = settings.BarColor;
                 model.BarTextColor = settings.BarTextColor;
                 model.BarMainButtonColor = settings.BarMainButtonColor;
+                model.BarMainButtonTextColor = settings.BarMainButtonTextColor;
                 model.ModalMainButtonColor = settings.ModalMainButtonColor;
                 model.ModalMainButtonTextColor = settings.ModalMainButtonTextColor;
                 model.Language = settings.Language;
@@ -69,6 +70,7 @@ namespace CookieConsent.OrchardCore.Drivers
                     settings.BarColor = model.BarColor;
                     settings.BarTextColor = model.BarTextColor;
                     settings.BarMainButtonColor = model.BarMainButtonColor;
+                    settings.BarMainButtonTextColor = model.BarMainButtonTextColor;
                     settings.ModalMainButtonColor = model.ModalMainButtonColor;
                     settings.ModalMainButtonTextColor = model.ModalMainButtonTextColor;
                     settings.Language = model.Language;
