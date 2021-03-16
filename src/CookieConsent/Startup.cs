@@ -7,6 +7,7 @@ using OrchardCore.ResourceManagement;
 using OrchardCore.Security.Permissions;
 using OrchardCore.Settings;
 using CookieConsent.OrchardCore.Drivers;
+using Microsoft.Extensions.Options;
 
 namespace CookieConsent.OrchardCore
 {
@@ -15,7 +16,7 @@ namespace CookieConsent.OrchardCore
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPermissionProvider, Permissions.Cookies>();
-            services.AddScoped<IResourceManifestProvider, ResourceManifest>();
+            services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
             services.AddScoped<IDisplayDriver<ISite>, ConsentSettingsDisplayDriver>();
             services.AddScoped<INavigationProvider, AdminMenu>();
             services.Configure<MvcOptions>((options) =>
