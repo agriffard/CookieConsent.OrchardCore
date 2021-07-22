@@ -6,7 +6,7 @@
     <Description>This module allows you to manage cookie consent.</Description>
     <PackageTags>CookieConsent;OrchardCore</PackageTags>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <VersionSuffix>rc2</VersionSuffix>
+    <VersionSuffix></VersionSuffix>
   </PropertyGroup>
 
   <!-- Called after so that the <VersionSuffix> is built after the local ones -->
