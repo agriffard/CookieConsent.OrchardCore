@@ -1,4 +1,4 @@
-image: Visual Studio 2019
+image: Visual Studio 2022
 install:
   - ps: $env:BuildNumber= $env:APPVEYOR_BUILD_NUMBER
   - ps: $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = true
@@ -8,7 +8,7 @@ install:
   - ps: $IsDevBranch = ($env:APPVEYOR_REPO_BRANCH -eq "dev" -And -not $env:APPVEYOR_PULL_REQUEST_NUMBER)
 # Uncomment to download a specific version of dotnet
   - ps: Invoke-WebRequest "https://raw.githubusercontent.com/dotnet/cli/master/scripts/obtain/dotnet-install.ps1" -OutFile "dotnet-install.ps1" 
-  - ps: .\dotnet-install.ps1 --Version 6.0.101
+  - ps: .\dotnet-install.ps1 --Version 6.0.300
 build_script:
   - dotnet restore
   - dotnet build -c Release
@@ -26,6 +26,6 @@ deploy:
       branch: master
     server: https://www.nuget.org/api/v2/package
     api_key:
-      secure: cdjdBSTv5lSKb7UjP3wFjo8iA/T+GYzNRfgHydJQxDPu5Adglz8dSGW9GSVhcB58
+      secure: IMEDf/y7kiierUuYZZvRpyMNpgxplkpgxh1KsHH0tTKGfD6C67Nar4sOcgE4fyxf
     skip_symbols: true
     artifact: /.*\.nupkg/  
