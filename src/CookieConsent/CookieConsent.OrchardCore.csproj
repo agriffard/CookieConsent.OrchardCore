@@ -6,13 +6,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="1.4.0" />
-		<PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="1.4.0" />
-		<PackageReference Include="OrchardCore.DisplayManagement" Version="1.4.0" />
-		<PackageReference Include="OrchardCore.Module.Targets" Version="1.4.0" />
-		<PackageReference Include="OrchardCore.Navigation.Core" Version="1.4.0" />
-		<PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.4.0" />
-		<PackageReference Include="OrchardCore.ContentFields" Version="1.4.0" />
+		<PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.DisplayManagement" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.Module.Targets" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.Navigation.Core" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.ContentFields" Version="1.5.0" />
 	</ItemGroup>
 
 	<ItemGroup>
