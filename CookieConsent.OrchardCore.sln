@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28107.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33620.401
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookieConsent.OrchardCore", "src\CookieConsent\CookieConsent.OrchardCore.csproj", "{35A0F713-5034-4426-9900-BD82288CA09D}"
 EndProject
