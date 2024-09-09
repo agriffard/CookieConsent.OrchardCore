@@ -1,3 +1,5 @@
+using CookieConsent.OrchardCore.Drivers;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Localization;
 using OrchardCore.Navigation;
 using System.Threading.Tasks;
@@ -6,7 +8,13 @@ namespace CookieConsent.OrchardCore
 {
     public class AdminMenu : AdminNavigationProvider
     {
-        private readonly IStringLocalizer S;
+        private static readonly RouteValueDictionary _routeValues = new()
+        {
+            { "area", "OrchardCore.Settings" },
+            { "groupId", CookieConsentConstants.Features.CookieConsent },
+        };
+
+        internal readonly IStringLocalizer S;
 
         public AdminMenu(IStringLocalizer<AdminMenu> localizer)
         {
@@ -20,7 +28,8 @@ namespace CookieConsent.OrchardCore
                     .Add(S["Settings"], settings => settings
                         .Add(S["Consent"], S["Consent"].PrefixPosition(), consent => consent
                             .AddClass("consent").Id("consent")
-                            .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = CookieConsentConstants.Features.CookieConsent })
+                            .Id("admin")
+                            .Action("Index", "Admin", _routeValues)
                             .Permission(Permissions.ManageConsent)
                             .LocalNav())
                 ));
