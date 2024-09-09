@@ -8,15 +8,12 @@ namespace CookieConsent.OrchardCore
 {
     public class AdminMenu : INavigationProvider
     {
-        private readonly ShellDescriptor _shellDescriptor;
         private readonly IStringLocalizer S;
 
         public AdminMenu(
-            IStringLocalizer<AdminMenu> localizer,
-            ShellDescriptor shellDescriptor)
+            IStringLocalizer<AdminMenu> localizer)
         {
             S = localizer;
-            _shellDescriptor = shellDescriptor;
         }
 
         public ValueTask BuildNavigationAsync(string name, NavigationBuilder builder)
