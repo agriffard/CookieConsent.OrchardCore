@@ -1,34 +1,30 @@
-using System.Threading.Tasks;
+using CookieConsent.OrchardCore.Settings;
+using CookieConsent.OrchardCore.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using OrchardCore.DisplayManagement.Entities;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
-using OrchardCore.Environment.Shell;
-using CookieConsent.OrchardCore.Settings;
-using CookieConsent.OrchardCore.ViewModels;
 using OrchardCore.Settings;
+using System.Threading.Tasks;
 
 namespace CookieConsent.OrchardCore.Drivers
 {
-    public class ConsentSettingsDisplayDriver : SectionDisplayDriver<ISite, ConsentSettings>
+    public class ConsentSettingsDisplayDriver : SiteDisplayDriver<ConsentSettings>
     {
         private readonly IAuthorizationService _authorizationService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IShellHost _shellHost;
-        private readonly ShellSettings _shellSettings;
 
         public ConsentSettingsDisplayDriver(
             IAuthorizationService authorizationService,
-            IHttpContextAccessor httpContextAccessor,
-            IShellHost shellHost,
-            ShellSettings shellSettings)
+            IHttpContextAccessor httpContextAccessor)
         {
             _authorizationService = authorizationService;
             _httpContextAccessor = httpContextAccessor;
-            _shellHost = shellHost;
-            _shellSettings = shellSettings;
         }
+
+        protected override string SettingsGroupId
+            => CookieConsentConstants.Features.CookieConsent;
 
         public override async Task<IDisplayResult> EditAsync(ISite site, ConsentSettings settings, BuildEditorContext context)
         {
@@ -49,12 +45,12 @@ namespace CookieConsent.OrchardCore.Drivers
                 model.Language = settings.Language;
                 model.Categories = settings.Categories;
                 model.Services = settings.Services;
-            }).Location("Content:5").OnGroup(ConsentConstants.Features.Consent);
+            }).Location("Content:5").OnGroup(CookieConsentConstants.Features.CookieConsent);
         }
 
         public override async Task<IDisplayResult> UpdateAsync(ISite site, ConsentSettings settings, UpdateEditorContext context)
         {
-            if (context.GroupId == ConsentConstants.Features.Consent)
+            if (context.GroupId == CookieConsentConstants.Features.CookieConsent)
             {
                 var user = _httpContextAccessor.HttpContext?.User;
                 if (user == null || !await _authorizationService.AuthorizeAsync(user, Permissions.ManageConsent))

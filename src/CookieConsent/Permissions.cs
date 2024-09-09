@@ -10,7 +10,6 @@ namespace CookieConsent.OrchardCore
         public static readonly Permission ManageConsent
             = new Permission(nameof(ManageConsent), "Manage Cookies consent settings");
 
-
         public class Cookies : IPermissionProvider
         {
 
