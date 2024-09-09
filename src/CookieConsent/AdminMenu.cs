@@ -19,7 +19,7 @@ namespace CookieConsent.OrchardCore
             _shellDescriptor = shellDescriptor;
         }
 
-        public Task BuildNavigationAsync(string name, NavigationBuilder builder)
+        public ValueTask BuildNavigationAsync(string name, NavigationBuilder builder)
         {
             if (String.Equals(name, "admin", StringComparison.OrdinalIgnoreCase))
             {
@@ -31,7 +31,7 @@ namespace CookieConsent.OrchardCore
                             .LocalNav())
                     ));
             }
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
     }
 }

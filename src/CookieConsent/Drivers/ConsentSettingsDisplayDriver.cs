@@ -30,7 +30,7 @@ namespace CookieConsent.OrchardCore.Drivers
             _shellSettings = shellSettings;
         }
 
-        public override async Task<IDisplayResult> EditAsync(ConsentSettings settings, BuildEditorContext context)
+        public override async Task<IDisplayResult> EditAsync(ISite site, ConsentSettings settings, BuildEditorContext context)
         {
             var user = _httpContextAccessor.HttpContext?.User;
             if (user == null || !await _authorizationService.AuthorizeAsync(user, Permissions.ManageConsent))
@@ -52,7 +52,7 @@ namespace CookieConsent.OrchardCore.Drivers
             }).Location("Content:5").OnGroup(ConsentConstants.Features.Consent);
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(ConsentSettings settings, BuildEditorContext context)
+        public override async Task<IDisplayResult> UpdateAsync(ISite site, ConsentSettings settings, UpdateEditorContext context)
         {
             if (context.GroupId == ConsentConstants.Features.Consent)
             {
@@ -78,7 +78,7 @@ namespace CookieConsent.OrchardCore.Drivers
                     settings.Services = model.Services;
                 }
             }
-            return await EditAsync(settings, context);
+            return await EditAsync(site, settings, context);
         }
     }
 }
