@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CookieConsent.OrchardCore.Drivers;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.Modules;
 using OrchardCore.Navigation;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Security.Permissions;
-using OrchardCore.Settings;
-using CookieConsent.OrchardCore.Drivers;
-using Microsoft.Extensions.Options;
 
 namespace CookieConsent.OrchardCore
 {
@@ -17,8 +16,8 @@ namespace CookieConsent.OrchardCore
         {
             services.AddScoped<IPermissionProvider, Permissions.Cookies>();
             services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
-            services.AddScoped<IDisplayDriver<ISite>, ConsentSettingsDisplayDriver>();
-            services.AddScoped<INavigationProvider, AdminMenu>();
+            services.AddSiteDisplayDriver<ConsentSettingsDisplayDriver>();
+            services.AddNavigationProvider<AdminMenu>();
             services.Configure<MvcOptions>((options) =>
             {
                 options.Filters.Add(typeof(ConsentFilter));
