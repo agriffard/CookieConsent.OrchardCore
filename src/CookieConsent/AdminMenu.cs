@@ -1,4 +1,3 @@
-using CookieConsent.OrchardCore.Drivers;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Localization;
 using OrchardCore.Navigation;
