@@ -27,7 +27,7 @@ namespace CookieConsent.OrchardCore
                     .Add(S["Settings"], settings => settings
                         .Add(S["Consent"], S["Consent"].PrefixPosition(), consent => consent
                             .AddClass("consent").Id("consent")
-                            .Id("admin")
+                            .Id("cookieconsent")
                             .Action("Index", "Admin", _routeValues)
                             .Permission(Permissions.ManageConsent)
                             .LocalNav())
